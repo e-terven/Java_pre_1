@@ -71,6 +71,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         List<User> list = new ArrayList<>();
         try (Connection con = Util.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM users;")) {
+            preparedStatement.setFetchSize(50); // получать данные итерационно - сколько строк брать за один раз
+            preparedStatement.setQueryTimeout(10); // установка таймаута для выполнения соединения (пул запросов)
+            preparedStatement.setMaxRows(100);
+
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 User user = new User();
