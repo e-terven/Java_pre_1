@@ -56,7 +56,6 @@ public class Util {
             try {
                 Properties properties = new Properties();
                 Configuration configuration = new Configuration();
-                //SessionFactory sessionFactory = null;
 
                 properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
                 properties.put(Environment.URL, URL);
